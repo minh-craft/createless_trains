@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(PonderIndex.class)
 public class PonderIndexMixin {
 	@Unique
-	private static final PonderRegistrationHelper HELPER = new PonderRegistrationHelper("create");;
+	private static final PonderRegistrationHelper HELPER = new PonderRegistrationHelper("create");
 
 	@Inject(method = "register",
 			at = @At("HEAD"),
