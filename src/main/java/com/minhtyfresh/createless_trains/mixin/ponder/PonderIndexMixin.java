@@ -61,8 +61,8 @@ public class PonderIndexMixin {
 				.addStoryBoard("train_track/chunks", TrackScenes::chunks);
 
 		HELPER.forComponents(AllBlocks.TRACK_STATION)
-				.addStoryBoard("train_station/assembly", TrainStationScenes::assembly);
-//				.addStoryBoard("train_station/schedule", TrainStationScenes::autoSchedule);
+				.addStoryBoard("train_station/assembly", TrainStationScenes::assembly)
+				.addStoryBoard("train_station/schedule", TrainStationScenes::autoSchedule);
 
 		HELPER.forComponents(AllBlocks.TRACK_SIGNAL)
 				.addStoryBoard("train_signal/placement", TrainSignalScenes::placement)

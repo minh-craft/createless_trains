@@ -12,6 +12,7 @@
     "block.WhistleBlockMixin",
     "ponder.AllPonderTagsMixin",
     "ponder.PonderIndexMixin",
+    "ponder.scenes.TrainScenesMixin",
     "ponder.scenes.TrainStationScenesMixin"
   ],
   "client": [

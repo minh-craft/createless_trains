@@ -30,12 +30,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(TrainStationScenes.class)
 public class TrainStationScenesMixin {
+
 	@Inject(method = "assembly",
 			at = @At("HEAD"),
 			cancellable = true,
 			remap = false)
 	private static void assembly(SceneBuilder scene, SceneBuildingUtil util, CallbackInfo ci) {
-
 		scene.title("train_assembly", "Assembling Trains");
 		scene.configureBasePlate(1, 0, 12);
 		scene.scaleSceneView(0.65F);
@@ -150,6 +150,7 @@ public class TrainStationScenesMixin {
 		scene.overlay.showControls((new InputWindowElement(util.vector.topOf(util.grid.at(5, 3, 5)), Pointing.DOWN)).withItem(new ItemStack(Items.CHARCOAL)), 40);
 		scene.idle(10);
 		scene.overlay.showText(90).pointAt(util.vector.blockSurface(util.grid.at(5, 3, 5), Direction.WEST)).placeNearTarget().attachKeyFrame().colored(PonderPalette.BLUE).text("Assembled Trains will move faster if they can find fuel in assembled chests or barrels");
+		// EDIT: remove reference to vaults
 //		scene.idle(100);
 //		scene.overlay.showSelectionWithText(util.select.fromTo(4, 3, 6, 5, 4, 7), 60).pointAt(util.vector.blockSurface(util.grid.at(5, 4, 6), Direction.UP)).colored(PonderPalette.RED).placeNearTarget().text("Fuel stored in Vaults will not be consumed by the train");
 		scene.idle(75);
@@ -217,6 +218,148 @@ public class TrainStationScenesMixin {
 		scene.overlay.showControls((new InputWindowElement(util.vector.topOf(util.grid.at(6, 0, 2)), Pointing.DOWN)).rightClick().withWrench(), 15);
 		scene.idle(15);
 		scene.world.moveSection(trainElement3, util.vector.of(0.0, 0.0, -4.0), 5);
+
+		ci.cancel();
+	}
+
+	@Inject(method = "autoSchedule",
+			at = @At("HEAD"),
+			cancellable = true,
+			remap = false)
+	private static void autoSchedule(SceneBuilder scene, SceneBuildingUtil util, CallbackInfo ci) {
+		scene.title("auto_schedule", "Stations & Scheduling");
+		scene.configureBasePlate(1, 0, 12);
+		scene.scaleSceneView(0.65F);
+		scene.setSceneOffsetY(-1.0F);
+		scene.showBasePlate();
+
+		for(int i = 13; i >= 0; --i) {
+			scene.world.showSection(util.select.position(i, 1, 6), Direction.DOWN);
+			scene.idle(1);
+		}
+
+		scene.world.toggleControls(util.grid.at(7, 3, 6));
+		scene.idle(4);
+		Selection redstone = util.select.fromTo(8, 1, 2, 8, 1, 1);
+		Selection belt = util.select.fromTo(9, 1, 3, 12, 1, 3);
+		Selection largeCog = util.select.position(13, 0, 4);
+		Selection cog = util.select.position(12, 1, 4);
+		BlockPos stationPos = util.grid.at(8, 1, 3);
+		Selection train = util.select.fromTo(9, 2, 5, 5, 3, 7);
+		Selection station = util.select.position(stationPos);
+		scene.world.showSection(station, Direction.DOWN);
+		scene.idle(10);
+		ElementLink<WorldSectionElement> trainElement = scene.world.showIndependentSection(train, Direction.DOWN);
+		scene.world.moveSection(trainElement, util.vector.of(-4.0, 0.0, 0.0), 0);
+		Vec3 target = util.vector.centerOf(2, 3, 6);
+		ElementLink<ParrotElement> birb = scene.special.createBirb(target, ParrotElement.FacePointOfInterestPose::new);
+		scene.idle(10);
+		scene.overlay.showText(90).pointAt(target).placeNearTarget().attachKeyFrame().text("Schedules can be used to provide drivers with a destination");
+		scene.idle(70);
+		scene.overlay.showControls((new InputWindowElement(target.add(0.0, 0.5, 0.0), Pointing.DOWN)).withItem(AllItems.SCHEDULE.asStack()), 40);
+		scene.idle(6);
+		scene.special.movePointOfInterest(util.grid.at(9, 4, 6));
+		Vec3 marker = util.vector.topOf(8, 0, 6).add(0.0, 0.1875, 0.0);
+		AABB bb = new AABB(marker, marker);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.OUTPUT, bb, bb, 1);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.OUTPUT, bb, bb.inflate(0.44999998807907104, 0.0, 0.44999998807907104), 40);
+		scene.idle(15);
+		AABB bb2 = (new AABB(marker, marker)).move(-0.45, 0.0, 0.0);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.OUTPUT, bb2, bb2.move(-4.0, 0.0, 0.0), 1);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.OUTPUT, bb2, bb2.expandTowards(-4.0, 0.0, 0.0), 20);
+		scene.idle(15);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.GREEN, bb, bb.inflate(0.44999998807907104, 0.0, 0.44999998807907104), 25);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.GREEN, bb2, bb2.expandTowards(-4.0, 0.0, 0.0), 25);
+		scene.idle(20);
+		scene.world.showSection(redstone, Direction.SOUTH);
+		scene.world.moveSection(trainElement, util.vector.of(4.0, 0.0, 0.0), 20);
+		scene.world.animateBogey(util.grid.at(7, 2, 6), -4.0F, 20);
+		scene.special.moveParrot(birb, util.vector.of(4.0, 0.0, 0.0), 20);
+		scene.idle(20);
+		scene.world.animateTrainStation(stationPos, true);
+		scene.world.toggleRedstonePower(redstone);
+		scene.effects.indicateRedstone(stationPos);
+		scene.idle(25);
+		scene.overlay.showText(80).pointAt(util.vector.topOf(stationPos.north()).subtract(0.0, 0.875, 0.0)).placeNearTarget().attachKeyFrame().text("Comparators will receive a signal whenever a Train is present");
+		scene.idle(90);
+		scene.world.hideSection(redstone, Direction.NORTH);
+		scene.world.animateTrainStation(stationPos, false);
+		scene.world.moveSection(trainElement, util.vector.of(0.0, 1.0, 0.0), 5);
+		scene.special.moveParrot(birb, util.vector.of(0.0, 2.0, 0.0), 5);
+		scene.idle(7);
+		scene.world.moveSection(trainElement, util.vector.of(4.0, 0.0, 0.0), 10);
+		scene.world.rotateSection(trainElement, 0.0, 180.0, 0.0, 10);
+		scene.special.moveParrot(birb, util.vector.of(6.0, 0.0, 0.0), 10);
+		scene.idle(12);
+		scene.world.moveSection(trainElement, util.vector.of(0.0, -1.0, 0.0), 5);
+		scene.special.moveParrot(birb, util.vector.of(0.0, -2.0, 0.0), 5);
+		scene.idle(25);
+		target = target.add(10.0, 0.0, 0.0);
+		scene.overlay.showText(90).pointAt(marker.add(-0.45, 0.0, 0.0)).colored(PonderPalette.RED).placeNearTarget().attachKeyFrame().text("Mind that a Station can only be approached from the indicated direction");
+		scene.idle(70);
+		scene.overlay.showControls((new InputWindowElement(target.add(0.0, 0.5, 0.0), Pointing.DOWN)).withItem(AllItems.SCHEDULE.asStack()), 40);
+		scene.idle(6);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.OUTPUT, bb, bb, 1);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.OUTPUT, bb, bb.inflate(0.44999998807907104, 0.0, 0.44999998807907104), 40);
+		scene.idle(15);
+		bb2 = (new AABB(marker, marker)).move(0.45, 0.0, 0.0);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.OUTPUT, bb2, bb2.move(4.0, 0.0, 0.0), 1);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.OUTPUT, bb2, bb2.expandTowards(4.0, 0.0, 0.0), 20);
+		scene.idle(15);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.RED, bb, bb.inflate(0.44999998807907104, 0.0, 0.44999998807907104), 45);
+		scene.overlay.chaseBoundingBoxOutline(PonderPalette.RED, bb2, bb2.expandTowards(4.0, 0.0, 0.0), 45);
+		scene.idle(20);
+		scene.special.movePointOfInterest(util.grid.at(11, 2, 5));
+		scene.idle(25);
+		scene.world.hideIndependentSection(trainElement, Direction.EAST);
+		scene.special.hideElement(birb, Direction.EAST);
+		scene.idle(20);
+		scene.world.multiplyKineticSpeed(util.select.everywhere(), 0.75F);
+		// EDIT: remove cogs and belts
+//		scene.world.showSection(largeCog, Direction.UP);
+//		scene.world.showSection(cog, Direction.DOWN);
+//		scene.idle(3);
+//		scene.world.showSection(belt, Direction.SOUTH);
+//		scene.idle(15);
+		scene.overlay.showText(70).pointAt(util.vector.topOf(stationPos).add(-0.5, 0.0, 0.0)).placeNearTarget().attachKeyFrame().text("Stations can also be used to assign new Schedules automatically");
+		scene.idle(40);
+		trainElement = scene.world.showIndependentSection(train, Direction.DOWN);
+		scene.world.moveSection(trainElement, util.vector.of(-4.0, 0.0, 0.0), 0);
+		target = util.vector.centerOf(2, 3, 6);
+		birb = scene.special.createBirb(target, ParrotElement.FacePointOfInterestPose::new);
+		scene.idle(10);
+		scene.world.moveSection(trainElement, util.vector.of(4.0, 0.0, 0.0), 20);
+		scene.world.animateBogey(util.grid.at(7, 2, 6), -4.0F, 20);
+		scene.special.moveParrot(birb, util.vector.of(4.0, 0.0, 0.0), 20);
+		// EDIT: remove schedule being placed on belt
+//		scene.idle(10);
+//		scene.world.createItemOnBelt(util.grid.at(11, 1, 3), Direction.DOWN, AllItems.SCHEDULE.asStack());
+		scene.idle(10);
+		scene.world.animateTrainStation(stationPos, true);
+		scene.idle(10);
+		scene.overlay.showControls((new InputWindowElement(util.vector.topOf(stationPos), Pointing.DOWN)).withItem(AllItems.SCHEDULE.asStack()), 20);
+		scene.idle(30);
+		scene.effects.indicateSuccess(stationPos);
+		scene.idle(10);
+		target = util.vector.centerOf(6, 3, 6);
+		scene.overlay.showLine(PonderPalette.GREEN, util.vector.topOf(stationPos).add(0.0, -0.125, 0.45), target.add(0.0, 0.0, -0.5), 40);
+		scene.idle(10);
+		scene.effects.indicateSuccess(util.grid.at(6, 3, 6));
+		scene.special.conductorBirb(birb, true);
+		scene.special.movePointOfInterest(util.grid.at(18, 4, 6));
+		scene.idle(25);
+		scene.overlay.showText(80).pointAt(target).placeNearTarget().attachKeyFrame().text("The Schedule placed on a station will automatically copy itself to present trains");
+		scene.idle(90);
+		scene.world.moveSection(trainElement, util.vector.of(8.0, 0.0, 0.0), 30);
+		scene.special.moveParrot(birb, util.vector.of(8.0, 0.0, 0.0), 30);
+		scene.world.animateBogey(util.grid.at(7, 2, 6), -8.0F, 30);
+		scene.world.animateTrainStation(stationPos, false);
+		scene.idle(10);
+		scene.world.hideIndependentSection(trainElement, (Direction)null);
+		scene.special.hideElement(birb, (Direction)null);
+		scene.idle(25);
+		scene.overlay.showText(100).pointAt(util.vector.topOf(stationPos).add(-0.5, 0.0, 0.0)).placeNearTarget().colored(PonderPalette.BLUE).text("As opposed to manual scheduling, drivers will not take the item with them");
+		scene.idle(60);
 
 		ci.cancel();
 	}
