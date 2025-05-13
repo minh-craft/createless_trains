@@ -1,6 +1,6 @@
 package com.minhtyfresh.createless_trains.mixin.ponder;
 
-import com.minhtyfresh.createless_trains.ponder.TrainStationScenes;
+//import com.minhtyfresh.createless_trains.ponder.TrainStationScenes;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.Create;
@@ -14,7 +14,7 @@ import com.simibubi.create.infrastructure.ponder.scenes.trains.TrackObserverScen
 import com.simibubi.create.infrastructure.ponder.scenes.trains.TrackScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.trains.TrainScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.trains.TrainSignalScenes;
-//import com.simibubi.create.infrastructure.ponder.scenes.trains.TrainStationScenes;
+import com.simibubi.create.infrastructure.ponder.scenes.trains.TrainStationScenes;
 import com.tterrag.registrate.fabric.RegistryObject;
 import com.tterrag.registrate.util.entry.BlockEntry;
 
@@ -61,8 +61,8 @@ public class PonderIndexMixin {
 				.addStoryBoard("train_track/chunks", TrackScenes::chunks);
 
 		HELPER.forComponents(AllBlocks.TRACK_STATION)
-				.addStoryBoard("train_station/assembly", TrainStationScenes::assembly)
-				.addStoryBoard("train_station/schedule", TrainStationScenes::autoSchedule);
+				.addStoryBoard("train_station/assembly", TrainStationScenes::assembly);
+//				.addStoryBoard("train_station/schedule", TrainStationScenes::autoSchedule);
 
 		HELPER.forComponents(AllBlocks.TRACK_SIGNAL)
 				.addStoryBoard("train_signal/placement", TrainSignalScenes::placement)
