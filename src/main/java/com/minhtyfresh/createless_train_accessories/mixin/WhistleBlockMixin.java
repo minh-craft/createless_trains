@@ -1,4 +1,4 @@
-package com.example.modid.mixin;
+package com.minhtyfresh.createless_train_accessories.mixin;
 
 import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
 

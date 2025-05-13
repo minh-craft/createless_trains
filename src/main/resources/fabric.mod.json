@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "createless_train_accessories",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Create-less Train Accessories",
+  "description": "Make train accessories like the display board and train whistle usable independent of the rest of Create. Also remove non train related ponders.",
   "authors": [
-    "Me!"
+    "minhty-fresh"
   ],
   "contact": {
     "sources": "https://github.com/Fabricators-of-Create/create-fabric-addon-template"
@@ -15,7 +15,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.example.modid.ExampleMod"
+      "com.minhtyfresh.createless_train_accessories.CreatelessTrainAccessoriesMod"
     ]
   },
   "mixins": [
