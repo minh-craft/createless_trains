@@ -1,4 +1,4 @@
-package com.minhtyfresh.createless_train_accessories.mixin;
+package com.minhtyfresh.createless_trains.mixin.block;
 
 import com.jozufozu.flywheel.api.MaterialManager;
 import com.jozufozu.flywheel.backend.instancing.blockentity.BlockEntityInstance;

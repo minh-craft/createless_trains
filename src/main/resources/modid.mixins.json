@@ -1,16 +1,17 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.minhtyfresh.createless_train_accessories.mixin",
+  "package": "com.minhtyfresh.createless_trains.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AllBlockEntityTypesMixin",
-    "AllPonderTagsMixin",
-    "FlapDisplayBlockEntityMixin",
-    "FlapDisplayBlockMixin",
-    "PonderIndexMixin",
-    "WhistleBlockEntityMixin",
-    "WhistleBlockMixin"
+    "block.AllBlockEntityTypesMixin",
+    "block.FlapDisplayBlockEntityMixin",
+    "block.FlapDisplayBlockMixin",
+    "block.WhistleBlockEntityMixin",
+    "block.WhistleBlockMixin",
+    "ponder.AllPonderTagsMixin",
+    "ponder.PonderIndexMixin",
+    "ponder.scenes.TrainStationScenesMixin"
   ],
   "client": [
   ],

@@ -1,4 +1,4 @@
-package com.minhtyfresh.createless_train_accessories.mixin;
+package com.minhtyfresh.createless_trains.mixin.block;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalBooleanRef;
@@ -23,7 +23,7 @@ public abstract class WhistleBlockEntityMixin {
 					target = "Lcom/simibubi/create/foundation/utility/animation/LerpedFloat;chase(DDLcom/simibubi/create/foundation/utility/animation/LerpedFloat$Chaser;)Lcom/simibubi/create/foundation/utility/animation/LerpedFloat;"),
 			remap = false
 	)
-	// whistle powered state no relies on fluid tanks or heat sources underneath
+	// whistle powered state no longer relies on fluid tanks or heat sources underneath
 	private void injected(CallbackInfo ci, @Local LocalBooleanRef localRef) {
 		localRef.set(this.isPowered());
 	}

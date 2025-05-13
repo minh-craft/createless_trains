@@ -1,4 +1,4 @@
-package com.minhtyfresh.createless_train_accessories.mixin;
+package com.minhtyfresh.createless_trains.mixin.ponder;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;

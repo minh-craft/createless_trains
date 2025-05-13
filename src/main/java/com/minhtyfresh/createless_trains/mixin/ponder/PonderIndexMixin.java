@@ -1,5 +1,6 @@
-package com.minhtyfresh.createless_train_accessories.mixin;
+package com.minhtyfresh.createless_trains.mixin.ponder;
 
+import com.minhtyfresh.createless_trains.ponder.TrainStationScenes;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.Create;
@@ -13,7 +14,7 @@ import com.simibubi.create.infrastructure.ponder.scenes.trains.TrackObserverScen
 import com.simibubi.create.infrastructure.ponder.scenes.trains.TrackScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.trains.TrainScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.trains.TrainSignalScenes;
-import com.simibubi.create.infrastructure.ponder.scenes.trains.TrainStationScenes;
+//import com.simibubi.create.infrastructure.ponder.scenes.trains.TrainStationScenes;
 import com.tterrag.registrate.fabric.RegistryObject;
 import com.tterrag.registrate.util.entry.BlockEntry;
 

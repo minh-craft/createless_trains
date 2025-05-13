@@ -1,4 +1,4 @@
-package com.minhtyfresh.createless_train_accessories.mixin;
+package com.minhtyfresh.createless_trains.mixin.block;
 
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.trains.display.FlapDisplayBlock;

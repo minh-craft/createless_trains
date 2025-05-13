@@ -1,4 +1,4 @@
-package com.minhtyfresh.createless_train_accessories;
+package com.minhtyfresh.createless_trains;
 
 import com.simibubi.create.Create;
 
@@ -10,9 +10,9 @@ import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CreatelessTrainAccessoriesMod implements ModInitializer {
-	public static final String ID = "createless-train-accessories";
-	public static final String NAME = "Create-less Train Accessories";
+public class CreatelessTrainsMod implements ModInitializer {
+	public static final String ID = "createless-trains";
+	public static final String NAME = "Create-less Trains";
 	public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
 
 	@Override
