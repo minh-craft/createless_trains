@@ -7,6 +7,7 @@
     "block.AllBlockEntityTypesMixin",
     "block.FlapDisplayBlockEntityMixin",
     "block.FlapDisplayBlockMixin",
+    "block.StationBlockMixin",
     "block.WhistleBlockEntityMixin",
     "block.WhistleBlockMixin",
     "ponder.AllPonderTagsMixin",
