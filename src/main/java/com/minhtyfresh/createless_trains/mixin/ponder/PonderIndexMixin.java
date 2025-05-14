@@ -10,6 +10,8 @@ import com.simibubi.create.foundation.ponder.PonderRegistrationHelper;
 import com.simibubi.create.infrastructure.ponder.PonderIndex;
 
 import com.simibubi.create.infrastructure.ponder.scenes.DisplayScenes;
+import com.simibubi.create.infrastructure.ponder.scenes.RedstoneScenes;
+import com.simibubi.create.infrastructure.ponder.scenes.SteamScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.trains.TrackObserverScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.trains.TrackScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.trains.TrainScenes;
@@ -37,15 +39,13 @@ public class PonderIndexMixin {
 			remap = false)
 	// register only the ponders related to trains, skip all other ponder registrations
 	private static void register(CallbackInfo ci){
-		// TODO add back later
 //		// Redstone
-//		HELPER.forComponents(AllBlocks.ORANGE_NIXIE_TUBE)
-//				.addStoryBoard("nixie_tube", RedstoneScenes::nixieTube);
+		HELPER.forComponents(AllBlocks.ORANGE_NIXIE_TUBE)
+				.addStoryBoard("nixie_tube", RedstoneScenes::nixieTube);
 
-		// TODO maybe add back later, would have to remove everything related to fluid tanks
 		// Steam
-//		HELPER.forComponents(AllBlocks.STEAM_WHISTLE)
-//				.addStoryBoard("steam_whistle", SteamScenes::whistle);
+		HELPER.forComponents(AllBlocks.STEAM_WHISTLE)
+				.addStoryBoard("steam_whistle", SteamScenes::whistle);
 
 		// Trains
 		HELPER.forComponents(TrackMaterial.allBlocks()
