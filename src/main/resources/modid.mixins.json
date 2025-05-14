@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "block.AllBlockEntityTypesMixin",
+    "block.AllBlocksMixin",
     "block.FlapDisplayBlockEntityMixin",
     "block.FlapDisplayBlockMixin",
     "block.StationBlockMixin",
@@ -13,6 +14,8 @@
     "ponder.AllPonderTagsMixin",
     "ponder.PonderIndexMixin",
     "ponder.scenes.DisplayScenesMixin",
+    "ponder.scenes.RedstoneScenesMixin",
+    "ponder.scenes.SteamScenesMixin",
     "ponder.scenes.TrackObserverScenesMixin",
     "ponder.scenes.TrackScenesMixin",
     "ponder.scenes.TrainScenesMixin",

@@ -1,0 +1,33 @@
+{
+  "item.create.wrench.tooltip.behaviour1": "Changes Train Signal Mode. _Sneak_ while interacting to _dismantle_ components.",
+  "item.create.wrench.tooltip.behaviour2": "_Relocates_ assembled trains.",
+  "item.create.wrench.tooltip.condition1": "When used on Blocks",
+  "item.create.wrench.tooltip.condition2": "When used on Trains",
+  "item.create.wrench.tooltip.summary": "Multi-purpose tool for working with your train systems.",
+
+  "create.ponder.display_board.text_2": "Static text can be applied using Name Tags",
+  "create.ponder.display_board.text_3": "And dynamic text through the use of Display Links",
+  "create.ponder.display_board.text_4": "Dyes can be applied to individual lines of the board",
+  "create.ponder.display_board.text_5": "Lines can be reset by clicking them with an empty hand",
+
+  "create.ponder.nixie_tube.text_2": "Using Name Tags, custom text can be displayed",
+
+  "create.ponder.steam_whistle.text_1": "The Whistle will play a note when activated",
+  "create.ponder.steam_whistle.text_2": "Use a Whistle item on the block to lower its pitch",
+  "create.ponder.steam_whistle.text_3": "Cycle between three different octaves using a Wrench",
+
+  "create.ponder.track_chunks.text_4": "Once near a Player, the train will re-appear",
+
+  "create.ponder.track_placement.text_1": "A new type of rail designed for Trains",
+
+  "create.ponder.train_assembly.text_9": "Every Train requires Train Controls on board",
+  "create.ponder.train_assembly.text_10": "An optional second one allows departure from Stations in both directions",
+  "create.ponder.train_assembly.text_11": "Open the Station UI and confirm the Assembly process",
+  "create.ponder.train_assembly.text_12": "Trains can be disassembled back into blocks at stations only",
+  "create.ponder.train_assembly.text_13": "When used on a station, maps will add a labeled marker at the location",
+  "create.ponder.train_assembly.text_14": "Assembled Trains can be relocated to nearby Tracks using the Wrench",
+
+  "create.ponder.train_controls.text_1": "Train Controls are required on every train",
+
+  "create.ponder.train_schedule.text_4": "Any mob sitting in front of Train Controls is an eligible conductor"
+}
