@@ -12,6 +12,7 @@
     "block.WhistleBlockMixin",
     "ponder.AllPonderTagsMixin",
     "ponder.PonderIndexMixin",
+    "ponder.scenes.DisplayScenesMixin",
     "ponder.scenes.TrackObserverScenesMixin",
     "ponder.scenes.TrackScenesMixin",
     "ponder.scenes.TrainScenesMixin",

@@ -80,8 +80,8 @@ public class PonderIndexMixin {
 
 		// Display Link
 		HELPER.forComponents(AllBlocks.DISPLAY_LINK)
-				.addStoryBoard("display_link", DisplayScenes::link)
-				.addStoryBoard("display_link_redstone", DisplayScenes::redstone);
+				.addStoryBoard("display_link", DisplayScenes::link);
+				//.addStoryBoard("display_link_redstone", DisplayScenes::redstone);
 		HELPER.forComponents(AllBlocks.DISPLAY_BOARD)
 				.addStoryBoard("display_board", DisplayScenes::board);
 
