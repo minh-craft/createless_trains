@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CreatelessTrainsMod implements ModInitializer {
+public class CreatelessTrains implements ModInitializer {
 	public static final String MOD_ID = "createless_trains";
 	public static final String NAME = "Create-less Trains";
 	public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
@@ -26,7 +26,7 @@ public class CreatelessTrainsMod implements ModInitializer {
 				() -> () -> "{} is accessing Porting Lib from the server!"
 		), NAME);
 
-		FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> ResourceManagerHelper.registerBuiltinResourcePack(CreatelessTrainsMod.id("createless_trains"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED));
+		FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> ResourceManagerHelper.registerBuiltinResourcePack(CreatelessTrains.id("createless_trains"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED));
 
 	}
 
