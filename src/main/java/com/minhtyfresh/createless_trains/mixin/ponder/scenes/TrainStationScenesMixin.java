@@ -349,8 +349,7 @@ public class TrainStationScenesMixin {
 		scene.special.conductorBirb(birb, true);
 		scene.special.movePointOfInterest(util.grid.at(18, 4, 6));
 		scene.idle(25);
-		// TODO: clarify that schedules can only be applied to incoming trains? or fix the bug
-		scene.overlay.showText(80).pointAt(target).placeNearTarget().attachKeyFrame().text("The Schedule placed on a station will automatically copy itself to incoming trains");
+		scene.overlay.showText(80).pointAt(target).placeNearTarget().attachKeyFrame().text("The Schedule placed on a station will automatically copy itself to present trains");
 		scene.idle(90);
 		scene.world.moveSection(trainElement, util.vector.of(8.0, 0.0, 0.0), 30);
 		scene.special.moveParrot(birb, util.vector.of(8.0, 0.0, 0.0), 30);
