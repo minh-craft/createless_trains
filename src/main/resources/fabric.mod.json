@@ -19,7 +19,7 @@
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "createless_trains.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
