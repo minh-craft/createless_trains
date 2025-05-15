@@ -2,6 +2,7 @@ package com.minhtyfresh.createless_trains.mixin.block;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.minhtyfresh.createless_trains.mixin.block.helper.StationBlockEntityAccessor;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.content.logistics.depot.SharedDepotBlockMethods;
 import com.simibubi.create.content.trains.station.StationBlock;
@@ -47,6 +48,8 @@ public class StationBlockMixin {
 			if (autoSchedule.isEmpty()) {
 				if( AllItems.SCHEDULE.isIn(pPlayer.getItemInHand(pHand))) {
 					SharedDepotBlockMethods.onUse(pState, pLevel, pPos, pPlayer, pHand, pHit);
+					// janky workaround to force trains already present at the station look newly arrived so that the schedule gets auto applied
+					((StationBlockEntityAccessor)station).setTrainPresent(false);
 					station.notifyUpdate();
 					return InteractionResult.SUCCESS;
 				}

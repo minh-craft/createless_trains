@@ -11,6 +11,7 @@
     "block.StationBlockMixin",
     "block.WhistleBlockEntityMixin",
     "block.WhistleBlockMixin",
+    "block.helper.StationBlockEntityAccessor",
     "ponder.AllPonderTagsMixin",
     "ponder.PonderIndexMixin",
     "ponder.scenes.DisplayScenesMixin",
