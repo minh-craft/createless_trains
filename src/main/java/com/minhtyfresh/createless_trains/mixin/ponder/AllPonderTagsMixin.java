@@ -8,7 +8,6 @@ import com.simibubi.create.foundation.ponder.PonderTag;
 import com.simibubi.create.infrastructure.ponder.AllPonderTags;
 
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 
@@ -57,6 +56,7 @@ public class AllPonderTagsMixin {
 				.add(AllBlocks.TRACK).add(AllBlocks.TRACK_STATION)
 				.add(AllItems.SUPER_GLUE)
 				.add(AllBlocks.TRAIN_CONTROLS)
+				.add(AllBlocks.STEAM_WHISTLE)
 				//.add(AllBlocks.TRAIN_DOOR)
 				.add(AllItems.SCHEDULE)
 				.add(AllBlocks.TRACK_SIGNAL).add(AllBlocks.ORANGE_NIXIE_TUBE)
@@ -79,10 +79,10 @@ public class AllPonderTagsMixin {
 			remap = false
 	)
 	private static void clinit(CallbackInfo ci){
-		TRAIN_RELATED = create("train_related").item((ItemLike)AllBlocks.TRACK.get()).defaultLang("Railway Equipment", "Components used in the construction or management of Trains").addToIndex();
+		TRAIN_RELATED = create("train_related").item(AllBlocks.TRACK.get()).defaultLang("Railway Equipment", "Components used in the construction or management of Trains").addToIndex();
 		//DECORATION = create("decoration").item(AllBlocks.ORANGE_NIXIE_TUBE).defaultLang("Aesthetics", "Components used mostly for decorative purposes").addToIndex();
-		DISPLAY_SOURCES = create("display_sources").item((ItemLike)AllBlocks.DISPLAY_LINK.get(), true, true).defaultLang("Sources for Display Links", "Components or Blocks which offer some data that can be read with a Display Link");
-		DISPLAY_TARGETS = create("display_targets").item((ItemLike)AllBlocks.DISPLAY_LINK.get(), true, true).defaultLang("Targets for Display Links", "Components or Blocks which can process and display the data received from a Display Link");
+		DISPLAY_SOURCES = create("display_sources").item(AllBlocks.DISPLAY_LINK.get(), true, true).defaultLang("Sources for Display Links", "Components or Blocks which offer some data that can be read with a Display Link");
+		DISPLAY_TARGETS = create("display_targets").item(AllBlocks.DISPLAY_LINK.get(), true, true).defaultLang("Targets for Display Links", "Components or Blocks which can process and display the data received from a Display Link");
 
 		ci.cancel();
 	}
