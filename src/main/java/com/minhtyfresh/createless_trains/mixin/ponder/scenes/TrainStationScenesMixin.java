@@ -117,7 +117,7 @@ public class TrainStationScenesMixin {
 		scene.world.restoreBlocks(util.select.position(6, 2, 6));
 		scene.idle(30);
 		scene.overlay.showOutline(PonderPalette.GREEN, casing, util.select.position(10, 2, 6).add(util.select.position(6, 2, 6)).add(util.select.position(3, 2, 6)), 40);
-		scene.overlay.showText(70).pointAt(util.vector.topOf(3, 2, 6)).placeNearTarget().attachKeyFrame().colored(PonderPalette.GREEN).text("Attach blocks with the help of Train Glue");
+		scene.overlay.showText(70).pointAt(util.vector.topOf(3, 2, 6)).placeNearTarget().attachKeyFrame().colored(PonderPalette.GREEN).text("Attach blocks with the help of Super Glue");
 		scene.idle(35);
 		scene.world.showSectionAndMerge(train1, Direction.DOWN, trainElement1);
 		scene.idle(10);
@@ -222,6 +222,7 @@ public class TrainStationScenesMixin {
 		ci.cancel();
 	}
 
+	// TODO could i accomplish this just by replacing nbt?
 	@Inject(method = "autoSchedule",
 			at = @At("HEAD"),
 			cancellable = true,
@@ -348,7 +349,8 @@ public class TrainStationScenesMixin {
 		scene.special.conductorBirb(birb, true);
 		scene.special.movePointOfInterest(util.grid.at(18, 4, 6));
 		scene.idle(25);
-		scene.overlay.showText(80).pointAt(target).placeNearTarget().attachKeyFrame().text("The Schedule placed on a station will automatically copy itself to present trains");
+		// TODO: clarify that schedules can only be applied to incoming trains? or fix the bug
+		scene.overlay.showText(80).pointAt(target).placeNearTarget().attachKeyFrame().text("The Schedule placed on a station will automatically copy itself to incoming trains");
 		scene.idle(90);
 		scene.world.moveSection(trainElement, util.vector.of(8.0, 0.0, 0.0), 30);
 		scene.special.moveParrot(birb, util.vector.of(8.0, 0.0, 0.0), 30);

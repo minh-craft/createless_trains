@@ -236,14 +236,13 @@ public class DisplayScenesMixin {
 //		scene.rotateCameraY(-60.0F);
 //		scene.idle(20);
 		Vec3 target = util.vector.of(3.95, 2.75, 3.25);
-		// EDIT: replace clipboard with nametag
-		ItemStack nametag = new ItemStack(Items.NAME_TAG); //AllBlocks.CLIPBOARD.asStack();
-		// ClipboardOverrides.switchTo(ClipboardOverrides.ClipboardType.WRITTEN, nametag);
-		scene.overlay.showControls((new InputWindowElement(target, Pointing.RIGHT)).withItem(nametag).rightClick(), 40);
+		ItemStack clipboard = AllBlocks.CLIPBOARD.asStack();
+		ClipboardOverrides.switchTo(ClipboardOverrides.ClipboardType.WRITTEN, clipboard);
+		scene.overlay.showControls((new InputWindowElement(target, Pointing.RIGHT)).withItem(clipboard).rightClick(), 40);
 		scene.idle(6);
 		scene.world.setDisplayBoardText(board, 0, Components.literal("Welcome!"));
 		scene.idle(25);
-		scene.overlay.showText(50).text("Static text can be applied using Name Tags").pointAt(target.add(-2.0, 0.0, 0.0)).attachKeyFrame().placeNearTarget();
+		scene.overlay.showText(50).text("Static text can be applied using written Clipboards").pointAt(target.add(-2.0, 0.0, 0.0)).attachKeyFrame().placeNearTarget();
 		scene.idle(80);
 		scene.world.showSection(trainStation, Direction.DOWN);
 		scene.idle(10);
@@ -255,17 +254,20 @@ public class DisplayScenesMixin {
 		scene.idle(20);
 		scene.overlay.showText(70).text("And dynamic text through the use of Display Links").pointAt(target.add(-2.0, 0.0, 0.0)).attachKeyFrame().colored(PonderPalette.OUTPUT).placeNearTarget();
 		scene.idle(50);
+		// EDIT: remove
 //		ItemStack item = AllItems.PROPELLER.asStack();
 //		scene.world.createItemOnBeltLike(depotPos, Direction.SOUTH, item);
 		scene.world.setDisplayBoardText(board, 1, Component.literal("45s CAR1 DEST"));
 		scene.world.flashDisplayLink(linkPos);
 		scene.idle(50);
+		// EDIT: remove
 //		scene.world.removeItemsFromBelt(depotPos);
 //		item = AllItems.BLAZE_CAKE.asStack();
 //		scene.world.createItemOnBeltLike(depotPos, Direction.SOUTH, item);
 		scene.world.setDisplayBoardText(board, 1, Component.literal("30s CAR1 DEST"));
 		scene.world.flashDisplayLink(linkPos);
 		scene.idle(50);
+		// EDIT: remove
 //		scene.world.removeItemsFromBelt(depotPos);
 //		item = AllBlocks.DISPLAY_BOARD.asStack();
 //		scene.world.createItemOnBeltLike(depotPos, Direction.SOUTH, item);

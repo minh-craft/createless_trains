@@ -50,9 +50,9 @@ public class RedstoneScenesMixin {
 //		scene.world.modifyBlockEntityNBT(util.select.position(2, 1, 1), AnalogLeverBlockEntity.class, (nbt) -> {
 //			nbt.putInt("State", 15);
 //		});
-//		scene.world.modifyBlock(util.grid.at(2, 1, 2), (s) -> {
-//			return (BlockState)s.setValue(RedStoneWireBlock.POWER, 15);
-//		}, false);
+		scene.world.modifyBlock(util.grid.at(2, 1, 2), (s) -> {
+			return (BlockState)s.setValue(RedStoneWireBlock.POWER, 15);
+		}, false);
 		scene.world.toggleRedstonePower(util.select.position(2,1,1));
 		scene.world.modifyBlockEntityNBT(tubes, NixieTubeBlockEntity.class, (nbt) -> {
 			nbt.putInt("RedstoneStrength", 15);
@@ -70,10 +70,9 @@ public class RedstoneScenesMixin {
 		});
 		scene.world.showSection(tubes, Direction.DOWN);
 		scene.idle(20);
-		// EDIT: replace clipboard with nametag
-		ItemStack nameTag = new ItemStack(Items.NAME_TAG);//AllBlocks.CLIPBOARD.asStack();
-		//ClipboardOverrides.switchTo(ClipboardOverrides.ClipboardType.WRITTEN, clipboard);
-		scene.overlay.showControls((new InputWindowElement(centerTube.add(1.0, 0.35, 0.0), Pointing.DOWN)).rightClick().withItem(nameTag), 40);
+		ItemStack clipboard = AllBlocks.CLIPBOARD.asStack();
+		ClipboardOverrides.switchTo(ClipboardOverrides.ClipboardType.WRITTEN, clipboard);
+		scene.overlay.showControls((new InputWindowElement(centerTube.add(1.0, 0.35, 0.0), Pointing.DOWN)).rightClick().withItem(clipboard), 40);
 		scene.idle(7);
 		Component component = Components.literal("CREATE");
 
@@ -91,7 +90,7 @@ public class RedstoneScenesMixin {
 		scene.idle(10);
 		scene.special.createBirb(util.vector.topOf(util.grid.at(0, 0, 3)), ParrotElement.DancePose::new);
 		scene.idle(20);
-		scene.overlay.showText(80).attachKeyFrame().placeNearTarget().text("Using Name Tags, custom text can be displayed").pointAt(util.vector.topOf(util.grid.at(3, 1, 3)).add(-0.75, -0.05000000074505806, 0.0));
+		scene.overlay.showText(80).attachKeyFrame().placeNearTarget().text("Using written Clipboards, custom text can be displayed").pointAt(util.vector.topOf(util.grid.at(3, 1, 3)).add(-0.75, -0.05000000074505806, 0.0));
 		scene.idle(90);
 		InputWindowElement input = (new InputWindowElement(util.vector.blockSurface(util.grid.at(3, 1, 3), Direction.UP), Pointing.DOWN)).withItem(new ItemStack(Items.BLUE_DYE));
 		scene.overlay.showControls(input, 30);

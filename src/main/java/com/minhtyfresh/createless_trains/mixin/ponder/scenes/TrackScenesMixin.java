@@ -51,6 +51,7 @@ public class TrackScenesMixin {
 			scene.idle(2);
 		}
 
+		// EDIT: change text to remove contraption
 		scene.overlay.showText(60).pointAt(util.vector.topOf(5, 0, 9)).placeNearTarget().text("A new type of rail designed for Trains");
 		scene.idle(50);
 		ElementLink<WorldSectionElement> fgTrack = scene.world.showIndependentSection(util.select.position(3, 3, 5), Direction.DOWN);
