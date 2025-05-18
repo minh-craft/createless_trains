@@ -1,17 +1,12 @@
 package com.minhtyfresh.createless_trains.mixin.ponder.scenes;
 
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllItems;
-import com.simibubi.create.content.equipment.clipboard.ClipboardOverrides;
-import com.simibubi.create.foundation.ponder.ElementLink;
 import com.simibubi.create.foundation.ponder.PonderPalette;
 import com.simibubi.create.foundation.ponder.SceneBuilder;
 import com.simibubi.create.foundation.ponder.SceneBuildingUtil;
 import com.simibubi.create.foundation.ponder.Selection;
 import com.simibubi.create.foundation.ponder.element.InputWindowElement;
-import com.simibubi.create.foundation.ponder.element.WorldSectionElement;
 import com.simibubi.create.foundation.utility.Components;
-import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.foundation.utility.Pointing;
 import com.simibubi.create.infrastructure.ponder.scenes.DisplayScenes;
 
@@ -196,9 +191,9 @@ public class DisplayScenesMixin {
 		scene.title("display_board", "Using Display Boards");
 		scene.configureBasePlate(0, 0, 5);
 		scene.showBasePlate();
-		Selection largeCog = util.select.position(5, 0, 1);
-		Selection cogs = util.select.fromTo(4, 1, 1, 4, 1, 3);
-		BlockPos depotPos = util.grid.at(3, 1, 1);
+//		Selection largeCog = util.select.position(5, 0, 1);
+//		Selection cogs = util.select.fromTo(4, 1, 1, 4, 1, 3);
+//		BlockPos depotPos = util.grid.at(3, 1, 1);
 		// EDIT: replace depot with train station
 		Selection trainStation = util.select.position(3, 1, 1);
 		BlockPos linkPos = util.grid.at(2, 1, 1);
@@ -236,13 +231,15 @@ public class DisplayScenesMixin {
 //		scene.rotateCameraY(-60.0F);
 //		scene.idle(20);
 		Vec3 target = util.vector.of(3.95, 2.75, 3.25);
-		ItemStack clipboard = AllBlocks.CLIPBOARD.asStack();
-		ClipboardOverrides.switchTo(ClipboardOverrides.ClipboardType.WRITTEN, clipboard);
-		scene.overlay.showControls((new InputWindowElement(target, Pointing.RIGHT)).withItem(clipboard).rightClick(), 40);
+		// EDIT: replace clipboard with name tag
+//		ItemStack clipboard = AllBlocks.CLIPBOARD.asStack();
+//		ClipboardOverrides.switchTo(ClipboardOverrides.ClipboardType.WRITTEN, clipboard);
+		ItemStack nameTag = new ItemStack(Items.NAME_TAG);
+		scene.overlay.showControls((new InputWindowElement(target, Pointing.RIGHT)).withItem(nameTag).rightClick(), 40);
 		scene.idle(6);
 		scene.world.setDisplayBoardText(board, 0, Components.literal("Welcome!"));
 		scene.idle(25);
-		scene.overlay.showText(50).text("Static text can be applied using written Clipboards").pointAt(target.add(-2.0, 0.0, 0.0)).attachKeyFrame().placeNearTarget();
+		scene.overlay.showText(50).text("Static text can be applied using Name Tags").pointAt(target.add(-2.0, 0.0, 0.0)).attachKeyFrame().placeNearTarget();
 		scene.idle(80);
 		scene.world.showSection(trainStation, Direction.DOWN);
 		scene.idle(10);

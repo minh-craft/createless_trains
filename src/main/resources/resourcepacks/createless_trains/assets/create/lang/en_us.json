@@ -5,10 +5,12 @@
   "item.create.wrench.tooltip.condition2": "When used on Trains",
   "item.create.wrench.tooltip.summary": "Multi-purpose tool for working with your train systems.",
 
-  "create.ponder.display_board.text_2": "Static text can be applied using written Clipboards",
+  "create.ponder.display_board.text_2": "Static text can be applied using Name Tags",
   "create.ponder.display_board.text_3": "And dynamic text through the use of Display Links",
   "create.ponder.display_board.text_4": "Dyes can be applied to individual lines of the board",
   "create.ponder.display_board.text_5": "Lines can be reset by clicking them with an empty hand",
+
+  "create.ponder.nixie_tube.text_2": "Using Name Tags, custom text can be displayed",
 
   "create.ponder.steam_whistle.text_1": "The Whistle will play a note when activated",
   "create.ponder.steam_whistle.text_2": "Use a Whistle item on the block to lower its pitch",
