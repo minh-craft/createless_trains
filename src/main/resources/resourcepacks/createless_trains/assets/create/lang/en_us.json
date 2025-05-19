@@ -29,5 +29,7 @@
 
   "create.ponder.train_controls.text_1": "Train Controls are required on every train",
 
-  "create.ponder.train_schedule.text_4": "Any mob sitting in front of Train Controls is an eligible conductor"
+  "create.ponder.train_schedule.text_4": "Any mob sitting in front of Train Controls is an eligible conductor",
+
+  "create.ponder.train_signal_signaling.text_4": "Segments of a gold signal usually lead into standard signals"
 }
