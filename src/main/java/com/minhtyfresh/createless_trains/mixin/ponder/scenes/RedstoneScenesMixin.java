@@ -1,8 +1,6 @@
 package com.minhtyfresh.createless_trains.mixin.ponder.scenes;
 
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.content.equipment.clipboard.ClipboardOverrides;
-import com.simibubi.create.content.redstone.analogLever.AnalogLeverBlockEntity;
 import com.simibubi.create.content.redstone.nixieTube.NixieTubeBlock;
 import com.simibubi.create.content.redstone.nixieTube.NixieTubeBlockEntity;
 import com.simibubi.create.foundation.ponder.PonderPalette;
@@ -70,9 +68,11 @@ public class RedstoneScenesMixin {
 		});
 		scene.world.showSection(tubes, Direction.DOWN);
 		scene.idle(20);
-		ItemStack clipboard = AllBlocks.CLIPBOARD.asStack();
-		ClipboardOverrides.switchTo(ClipboardOverrides.ClipboardType.WRITTEN, clipboard);
-		scene.overlay.showControls((new InputWindowElement(centerTube.add(1.0, 0.35, 0.0), Pointing.DOWN)).rightClick().withItem(clipboard), 40);
+		// EDIT: replace clipboard with nametag
+//		ItemStack clipboard = AllBlocks.CLIPBOARD.asStack();
+//		ClipboardOverrides.switchTo(ClipboardOverrides.ClipboardType.WRITTEN, clipboard);
+		ItemStack nameTag = new ItemStack(Items.NAME_TAG);
+		scene.overlay.showControls((new InputWindowElement(centerTube.add(1.0, 0.35, 0.0), Pointing.DOWN)).rightClick().withItem(nameTag), 40);
 		scene.idle(7);
 		Component component = Components.literal("CREATE");
 
@@ -90,7 +90,7 @@ public class RedstoneScenesMixin {
 		scene.idle(10);
 		scene.special.createBirb(util.vector.topOf(util.grid.at(0, 0, 3)), ParrotElement.DancePose::new);
 		scene.idle(20);
-		scene.overlay.showText(80).attachKeyFrame().placeNearTarget().text("Using written Clipboards, custom text can be displayed").pointAt(util.vector.topOf(util.grid.at(3, 1, 3)).add(-0.75, -0.05000000074505806, 0.0));
+		scene.overlay.showText(80).attachKeyFrame().placeNearTarget().text("Using Name Tags, custom text can be displayed").pointAt(util.vector.topOf(util.grid.at(3, 1, 3)).add(-0.75, -0.05000000074505806, 0.0));
 		scene.idle(90);
 		InputWindowElement input = (new InputWindowElement(util.vector.blockSurface(util.grid.at(3, 1, 3), Direction.UP), Pointing.DOWN)).withItem(new ItemStack(Items.BLUE_DYE));
 		scene.overlay.showControls(input, 30);
