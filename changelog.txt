@@ -1,0 +1,22 @@
+==========================================
+v0.1.0
+- initial release
+
+==========================================
+v0.2.0
+- fix gradlew permissions
+- update icon.png
+
+==========================================
+v0.3.0
+- remove clipboards from nixie tube and display board ponders, replace with name tag instead
+
+==========================================
+v0.4.0
+- rename brass signal to gold signal in signal ponder
+
+==========================================
+v0.5.0
+- add changelog
+- update mod author and homepage links
+
