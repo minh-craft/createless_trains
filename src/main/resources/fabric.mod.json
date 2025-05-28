@@ -5,10 +5,11 @@
   "name": "Create-less Trains",
   "description": "Make train accessories like the display board and train whistle usable independent of the rest of Create. Also remove non train related ponders.",
   "authors": [
-    "minhty-fresh"
+    "minh-craft"
   ],
   "contact": {
-    "sources": "https://github.com/Fabricators-of-Create/create-fabric-addon-template"
+    "homepage": "https://github.com/minh-craft/createless_trains",
+    "sources": "https://github.com/minh-craft/createless_trains"
   },
   "license": "CC0",
   "icon": "assets/createless_trains/icon.png",
