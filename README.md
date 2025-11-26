@@ -14,6 +14,9 @@ Specific Changes:
 
 This mod was developed using this template: https://github.com/Fabricators-of-Create/create-fabric-addon-template
 
+## Contributions
+- Thank you to https://github.com/skycatminepokie for helping me figure out mixins for this mod on the Fabric discord
+
 ## License
 
 This mod is available under the CC0 license. Feel free to do as you wish with it.
